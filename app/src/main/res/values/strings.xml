@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Game Database</string>
+    <string name="games">Games</string>
+    <string name="generic_network_error">There was an error, please try again later.</string>
+    <string name="unauthorized_network_error">Sorry! You need to be logged in to do that</string>
+    <string name="rating">Rating: %1$d%%</string>
+    <string name="genre">Genre: %1$s</string>
+    <string name="released">Released: %1$s</string>
+</resources>
