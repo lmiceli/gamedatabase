@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_0.5">4dp</dimen>
+    <dimen name="size_1">8dp</dimen>
+    <dimen name="size_1.5">12dp</dimen>
+    <dimen name="size_2">16dp</dimen>
+    <dimen name="size_2.5">20dp</dimen>
+    <dimen name="size_3">24dp</dimen>
+    <dimen name="size_4">32dp</dimen>
+    <dimen name="size_5">40dp</dimen>
+    <dimen name="size_6">48dp</dimen>
+    <dimen name="size_7">56dp</dimen>
+    <dimen name="size_8">64dp</dimen>
+    <dimen name="size_9">72dp</dimen>
+    <dimen name="size_10">80dp</dimen>
+    <dimen name="size_11">100dp</dimen>
+    <dimen name="size_12">120dp</dimen>
+    <dimen name="row_game_width">192dp</dimen>
+    <dimen name="row_game_height">255dp</dimen>
+</resources>
