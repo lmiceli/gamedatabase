@@ -4,14 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Surface
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.ExperimentalPagingApi
-import androidx.paging.PagingData
-import androidx.recyclerview.widget.GridLayoutManager
+import com.lmiceli.gamedatabase.ui.compose.theme.GDAppTheme
 import com.lmiceli.gamedatabase.R
-import com.lmiceli.gamedatabase.data.entities.Game
 import com.lmiceli.gamedatabase.databinding.GamesFragmentBinding
 import com.lmiceli.gamedatabase.ui.base.BasicFragment
 import com.lmiceli.gamedatabase.utils.autoCleared
@@ -44,28 +49,55 @@ class GamesFragment : BasicFragment(), GamesAdapter.GameItemListener {
     }
 
     private fun setupRecyclerView() {
-        adapter = GamesAdapter(this)
-        binding.gamesRv.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.gamesRv.adapter = adapter
+//        adapter = GamesAdapter(this)
+//        binding.gamesRv.layoutManager = GridLayoutManager(requireContext(), 2)
+//        binding.gamesRv.adapter = adapter
 
+
+        binding.composeView.setContent {
+            GDAppTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Greeting("Android")
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun Greeting(name: String, modifier: Modifier = Modifier) {
+        Text(
+            text = "Hello $name!",
+            modifier = modifier
+        )
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun GreetingPreview() {
+        GDAppTheme {
+            Greeting("Android")
+        }
     }
 
     // todo: I did not have time to figure out how to get error messages to ui
     //  after migrating to paging data but I plan to eventually do it
     private fun setupObservers() {
-        viewModel.games.observe(
-            viewLifecycleOwner,
-            { gamesData: PagingData<Game> ->
-                setLoading(false)
-                launchOnLifecycleScope {
-                    adapter.submitData(gamesData)
-                }
-            }
-        )
+//        viewModel.games.observe(
+//            viewLifecycleOwner,
+//            { gamesData: PagingData<Game> ->
+//                setLoading(false)
+//                launchOnLifecycleScope {
+//                    adapter.submitData(gamesData)
+//                }
+//            }
+//        )
     }
 
     override fun onClickedGame(id: Long) {
-
         findNavController().navigate(
             R.id.action_gamesFragment_to_gameDetailFragment,
             bundleOf("id" to id)

@@ -49,14 +49,6 @@
             android:layout_marginHorizontal="@dimen/size_2"
             android:layout_marginBottom="@dimen/size_2">
 
-<!--            <androidx.compose.ui.platform.ComposeView-->
-<!--                android:id="@+id/prueba"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                />-->
-<!--            seguir-->
-
-
             <TextView
                 android:id="@+id/name"
                 style="@style/GameTitle"
