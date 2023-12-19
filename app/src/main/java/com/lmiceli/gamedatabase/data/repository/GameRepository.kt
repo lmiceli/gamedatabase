@@ -1,12 +1,15 @@
 package com.lmiceli.gamedatabase.data.repository
 
-import androidx.lifecycle.LiveData
-import androidx.paging.*
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.lmiceli.gamedatabase.data.GameMediator
 import com.lmiceli.gamedatabase.data.entities.Game
 import com.lmiceli.gamedatabase.data.local.GameDao
 import com.lmiceli.gamedatabase.data.remote.dto.request.GameListRequest
 import com.lmiceli.gamedatabase.utils.getFromDB
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GameRepository @ExperimentalPagingApi
@@ -20,7 +23,7 @@ class GameRepository @ExperimentalPagingApi
     )
 
     @ExperimentalPagingApi
-    fun getGames(): LiveData<PagingData<Game>> {
+    fun getGames(): Flow<PagingData<Game>> {
 
         return Pager(
             PagingConfig(
@@ -31,7 +34,7 @@ class GameRepository @ExperimentalPagingApi
             remoteMediator = mediator,
             pagingSourceFactory = { localDataSource.getAllGames() },
 
-            ).liveData
+            ).flow
 
         // todo: I would migrate to flow, but my original architecture was based on livedata and
         //  moving to paging 3 kinda broke too much stuff for me to fix it all in what was supposed

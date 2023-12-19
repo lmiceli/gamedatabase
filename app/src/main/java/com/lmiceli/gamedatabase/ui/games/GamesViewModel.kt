@@ -13,6 +13,8 @@ class GamesViewModel @Inject constructor(
 ) : ViewModel() {
 
     @ExperimentalPagingApi
-    val games = repository.getGames().cachedIn(this)
+    val games = repository.getGames()
+    // todox this was in livedata, do I need something like it in flow?
+        //.cachedIn(this)
 
 }
